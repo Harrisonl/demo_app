@@ -18,6 +18,9 @@ defmodule DemoAppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    post "/usage", UsageWebhookController, :webhook
+    live "/reports", ReportLive, :index
+    live "/reports/:user_id", ReportLive, :user
   end
 
   # Other scopes may use custom stacks.

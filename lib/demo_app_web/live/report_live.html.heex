@@ -1,0 +1,5 @@
+<h1>current users<h1>
+
+<%= for user <- @users do %>
+    <a href={Path.join(["reports", user.id])}><%= user.username %></a>
+<% end %>
