@@ -1,5 +1,16 @@
-<h1>current users<h1>
+<%= case @live_action do %>
+    <% :index -> %>
+        <h1>current users</h1>
 
-<%= for user <- @users do %>
-    <a href={Path.join(["reports", user.id])}><%= user.username %></a>
-<% end %>
+        <%= for user <- @users do %>
+            <a href={Path.join(["reports", user.id])}><%= user.username %></a>
+        <% end %>
+    <% :user -> %>
+        <h1><%= @user.username %></h1>
+
+        <%= for usage <- @streams.usage do %>
+            <div>
+                <a href={usage.domain}><%= usage.domain %></a>
+                <p><%= usage.timestamp %></p>
+            </div>
+        <% end %>
